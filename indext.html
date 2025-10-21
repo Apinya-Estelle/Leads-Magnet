@@ -37,7 +37,6 @@
                 <p class="mt-3 text-gray-600">ตอบคำถามเพียง 5 ข้อ เพื่อวิเคราะห์ปัญหาเบื้องต้น</p>
             </div>
             
-            <!-- This is the corrected form tag with the required ID -->
             <form id="hairQuizForm" class="space-y-8">
                 
                 <!-- Question 1 -->
@@ -78,15 +77,15 @@
                     <p class="text-sm text-gray-500 mb-4">(เลือกได้หลายข้อ)</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="quiz-option">
-                            <input type="checkbox" id="q2_1" name="q2_actions" value="ดัดผม หรือ ยืดผม (มากกว่า 2 ครั้งต่อปี)">
+                            <input type="checkbox" id="q2_1" name="q2_actions" value="ดัดผม หรือ ยืดผม">
                             <label for="q2_1" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ดัดผม หรือ ยืดผม</label>
                         </div>
                          <div class="quiz-option">
-                            <input type="checkbox" id="q2_2" name="q2_actions" value="กัดสีผม หรือ ทำสีผมเป็นประจำ (ทุก 1-2 เดือน)">
+                            <input type="checkbox" id="q2_2" name="q2_actions" value="กัดสีผม หรือ ทำสีผมเป็นประจำ">
                             <label for="q2_2" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">กัดสี/ทำสีผมเป็นประจำ</label>
                         </div>
                         <div class="quiz-option">
-                            <input type="checkbox" id="q2_3" name="q2_actions" value="เป่าผมหรือรีดผมด้วยความร้อนสูง (เกือบทุกวัน)">
+                            <input type="checkbox" id="q2_3" name="q2_actions" value="เป่าผมหรือรีดผมด้วยความร้อนสูง">
                             <label for="q2_3" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ใช้ความร้อนกับผมเกือบทุกวัน</label>
                         </div>
                         <div class="quiz-option">
@@ -147,22 +146,15 @@
     </div>
 
     <script>
-        // Wait for the DOM to be fully loaded before running the script
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('hairQuizForm');
-
             if (form) {
-                // Listen for the form submission
                 form.addEventListener('submit', function(event) {
-                    // Prevent the form from submitting the traditional way
                     event.preventDefault();
-
-                    // --- Function to get answers ---
                     const getRadioValue = (name) => {
                         const radio = document.querySelector(`input[name="${name}"]:checked`);
                         return radio ? radio.value : "ไม่ได้เลือก";
                     };
-
                     const getCheckboxValues = (name) => {
                         const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
                         if (checkboxes.length === 0) return ["ไม่ได้เลือก"];
@@ -171,36 +163,23 @@
                             let value = checkbox.value;
                             if (value === "อื่นๆ") {
                                 const otherText = document.getElementById('q3_other_text').value.trim();
-                                if (otherText) {
-                                    value = `อื่นๆ: ${otherText}`;
-                                } else {
-                                    value = 'อื่นๆ (ไม่ได้ระบุ)';
-                                }
+                                value = otherText ? `อื่นๆ: ${otherText}` : 'อื่นๆ (ไม่ได้ระบุ)';
                             }
                             values.push(value);
                         });
                         return values;
                     };
-
-                    // --- Collect all answers ---
                     const answers = {
                         q1: getRadioValue('q1_condition'),
-                        q2: getCheckboxValues('q2_actions').join(';'), // ใช้ ; เป็นตัวคั่น
-                        q3: getCheckboxValues('q3_solutions').join(';'), // ใช้ ; เป็นตัวคั่น
+                        q2: getCheckboxValues('q2_actions').join(';'),
+                        q3: getCheckboxValues('q3_solutions').join(';'),
                         q4: getRadioValue('q4_confidence'),
                         q5: getRadioValue('q5_duration')
                     };
-
-                    // --- สร้าง URL สำหรับส่งต่อไปยังหน้าผลลัพธ์ ---
-                    // หมายเหตุ: คุณต้องอัปโหลดไฟล์ result.html ไปไว้ที่เดียวกับไฟล์นี้
                     const params = new URLSearchParams(answers);
-                    const resultUrl = `result.html?${params.toString()}`;
-                    
-                    // ส่งต่อไปยังหน้า result.html
-                    window.location.href = resultUrl;
+                    // Updated URL to point to your GitHub Pages site
+                    window.location.href = `https://apinya-estelle.github.io/Result_Form/?${params.toString()}`;
                 });
-            } else {
-                console.error("Error: The form element with ID 'hairQuizForm' was not found.");
             }
         });
     </script>
