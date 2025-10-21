@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ค้นหาสาเหตุผมบาง ผมร่วง - แบบประเมิน</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; }
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        input[type="radio"]:checked + label,
+        input[type="checkbox"]:checked + label {
+            border-color: #3b82f6; /* blue-500 */
+            background-color: #eff6ff; /* blue-50 */
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto px-4 py-8 md:py-16">
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">ค้นหาสาเหตุผมบาง ผมร่วง ผมขาดง่าย ของคุณ</h1>
+                <p class="mt-3 text-gray-600">ตอบคำถามเพียง 5 ข้อ เพื่อวิเคราะห์ปัญหาเบื้องต้น</p>
+            </div>
+            
+            <!-- This is the corrected form tag with the required ID -->
+            <form id="hairQuizForm" class="space-y-8">
+                
+                <!-- Question 1 -->
+                <div>
+                    <label class="text-lg font-bold text-gray-700">ข้อ 1: สภาพเส้นผมของคุณในปัจจุบัน ตรงกับข้อไหนมากที่สุด? <span class="text-red-500">*</span></label>
+                    <p class="text-sm text-gray-500 mb-4">(เลือก 1 ข้อ)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="q1_1" name="q1_condition" value="ผมบางลงบริเวณกลางศีรษะ หรือรอยแสกผมเริ่มกว้างขึ้น" required>
+                            <label for="q1_1" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ผมบางลงบริเวณกลางศีรษะ หรือรอยแสกผมเริ่มกว้างขึ้น</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1_2" name="q1_condition" value="แนวไรผมด้านหน้าเถิกร่นสูงขึ้น (รูปตัว M)">
+                            <label for="q1_2" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">แนวไรผมด้านหน้าเถิกร่นสูงขึ้น (รูปตัว M)</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1_3" name="q1_condition" value="ผมร่วงเยอะผิดปกติทั่วทั้งศีรษะ (พบเส้นผมจำนวนมากบนหมอน, ตอนสระผม, หรือตอนหวีผม)">
+                            <label for="q1_3" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ผมร่วงเยอะผิดปกติทั่วทั้งศีรษะ</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1_4" name="q1_condition" value="ผมร่วงเป็นหย่อมๆ (เห็นหนังศีรษะเป็นวง)">
+                            <label for="q1_4" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ผมร่วงเป็นหย่อมๆ (เห็นหนังศีรษะเป็นวง)</label>
+                        </div>
+                         <div class="quiz-option">
+                            <input type="radio" id="q1_5" name="q1_condition" value="เส้นผมแห้งเสีย เปราะบาง ขาดง่ายกลางเส้น (สังเกตเห็นผมหักสั้นๆ)">
+                            <label for="q1_5" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">เส้นผมแห้งเสีย เปราะบาง ขาดง่ายกลางเส้น</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1_6" name="q1_condition" value="ผมบางลงโดยรวมทั่วศีรษะ และเห็นหนังศีรษะชัดเจนขึ้น">
+                            <label for="q1_6" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ผมบางลงโดยรวม และเห็นหนังศีรษะชัดขึ้น</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div>
+                    <label class="text-lg font-bold text-gray-700">ข้อ 2: ในช่วง 1 ปีที่ผ่านมา คุณทำสิ่งเหล่านี้บ่อยเพียงใด?</label>
+                    <p class="text-sm text-gray-500 mb-4">(เลือกได้หลายข้อ)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="quiz-option">
+                            <input type="checkbox" id="q2_1" name="q2_actions" value="ดัดผม หรือ ยืดผม (มากกว่า 2 ครั้งต่อปี)">
+                            <label for="q2_1" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ดัดผม หรือ ยืดผม</label>
+                        </div>
+                         <div class="quiz-option">
+                            <input type="checkbox" id="q2_2" name="q2_actions" value="กัดสีผม หรือ ทำสีผมเป็นประจำ (ทุก 1-2 เดือน)">
+                            <label for="q2_2" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">กัดสี/ทำสีผมเป็นประจำ</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="checkbox" id="q2_3" name="q2_actions" value="เป่าผมหรือรีดผมด้วยความร้อนสูง (เกือบทุกวัน)">
+                            <label for="q2_3" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ใช้ความร้อนกับผมเกือบทุกวัน</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="checkbox" id="q2_4" name="q2_actions" value="ไม่ได้ทำอะไรตามข้างต้นเป็นพิเศษ">
+                            <label for="q2_4" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ไม่ได้ทำอะไรเป็นพิเศษ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div>
+                     <label class="text-lg font-bold text-gray-700">ข้อ 3: ตอนนี้คุณใช้อะไรอยู่บ้างในการแก้ปัญหา?</label>
+                    <p class="text-sm text-gray-500 mb-4">(เลือกได้หลายข้อ)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="quiz-option"><input type="checkbox" id="q3_1" name="q3_solutions" value="ใช้แชมพู/ครีมนวด สูตรลดผมร่วง"><label for="q3_1" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ใช้แชมพู/ครีมนวด สูตรลดผมร่วง</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_2" name="q3_solutions" value="ใช้เซรั่ม / โทนิค บำรุงหนังศีรษะ"><label for="q3_2" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ใช้เซรั่ม / โทนิค</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_3" name="q3_solutions" value="ทานวิตามิน / อาหารเสริม"><label for="q3_3" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ทานวิตามิน / อาหารเสริม</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_4" name="q3_solutions" value="พบแพทย์ผิวหนัง / คลินิกเส้นผม"><label for="q3_4" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">พบแพทย์ / คลินิก</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_5" name="q3_solutions" value="ปรับการกิน / การนอน / ลดความเครียด"><label for="q3_5" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ปรับการกิน / การนอน / ลดเครียด</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_6" name="q3_solutions" value="ไม่ได้ทำอะไร"><label for="q3_6" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">ไม่ได้ทำอะไร</label></div>
+                        <div class="quiz-option"><input type="checkbox" id="q3_7" name="q3_solutions" value="อื่นๆ"><label for="q3_7" class="block border border-gray-200 rounded-lg p-4 cursor-pointer">อื่นๆ</label></div>
+                    </div>
+                    <input type="text" id="q3_other_text" name="q3_other_text" placeholder="โปรดระบุวิธีอื่นๆ..." class="mt-4 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Question 4 -->
+                <div>
+                    <label class="text-lg font-bold text-gray-700">ข้อ 4: ปัญหาเส้นผมส่งผลกระทบต่อ "ความมั่นใจ" ของคุณมากน้อยเพียงใด?</label>
+                    <div class="mt-4 flex flex-col md:flex-row gap-4">
+                        <div class="quiz-option flex-1"><input type="radio" id="q4_1" name="q4_confidence" value="มากที่สุด"><label for="q4_1" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">มากที่สุด</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q4_2" name="q4_confidence" value="มาก"><label for="q4_2" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">มาก</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q4_3" name="q4_confidence" value="ปานกลาง"><label for="q4_3" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">ปานกลาง</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q4_4" name="q4_confidence" value="เล็กน้อย"><label for="q4_4" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">เล็กน้อย</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q4_5" name="q4_confidence" value="ไม่ส่งผลเลย"><label for="q4_5" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">ไม่ส่งผลเลย</label></div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                 <div>
+                    <label class="text-lg font-bold text-gray-700">ข้อ 5: คุณเริ่มกังวลเกี่ยวกับปัญหาเส้นผมมานานแค่ไหนแล้ว?</label>
+                     <div class="mt-4 flex flex-col md:flex-row gap-4">
+                        <div class="quiz-option flex-1"><input type="radio" id="q5_1" name="q5_duration" value="น้อยกว่า 6 เดือน"><label for="q5_1" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">น้อยกว่า 6 เดือน</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q5_2" name="q5_duration" value="6 เดือน - 1 ปี"><label for="q5_2" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">6 เดือน - 1 ปี</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q5_3" name="q5_duration" value="1 - 3 ปี"><label for="q5_3" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">1 - 3 ปี</label></div>
+                        <div class="quiz-option flex-1"><input type="radio" id="q5_4" name="q5_duration" value="มากกว่า 3 ปี"><label for="q5_4" class="text-center block border border-gray-200 rounded-lg p-4 cursor-pointer">มากกว่า 3 ปี</label></div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-6">
+                     <p class="mb-4 font-semibold text-gray-700">"เผยสาเหตุที่แท้จริงของอาการผมบาง ผมร่วง ผมขาด ของคุณ"</p>
+                    <button type="submit" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                        ส่งผลประเมินเพื่อรับคำปรึกษา
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('hairQuizForm');
+
+            if (form) {
+                // Listen for the form submission
+                form.addEventListener('submit', function(event) {
+                    // Prevent the form from submitting the traditional way
+                    event.preventDefault();
+
+                    // --- Function to get answers ---
+                    const getRadioValue = (name) => {
+                        const radio = document.querySelector(`input[name="${name}"]:checked`);
+                        return radio ? radio.value : "ไม่ได้เลือก";
+                    };
+
+                    const getCheckboxValues = (name) => {
+                        const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+                        if (checkboxes.length === 0) return ["ไม่ได้เลือก"];
+                        let values = [];
+                        checkboxes.forEach((checkbox) => {
+                            let value = checkbox.value;
+                            if (value === "อื่นๆ") {
+                                const otherText = document.getElementById('q3_other_text').value.trim();
+                                if (otherText) {
+                                    value = `อื่นๆ: ${otherText}`;
+                                } else {
+                                    value = 'อื่นๆ (ไม่ได้ระบุ)';
+                                }
+                            }
+                            values.push(value);
+                        });
+                        return values;
+                    };
+
+                    // --- Collect all answers ---
+                    const answers = {
+                        q1: getRadioValue('q1_condition'),
+                        q2: getCheckboxValues('q2_actions').join(';'), // ใช้ ; เป็นตัวคั่น
+                        q3: getCheckboxValues('q3_solutions').join(';'), // ใช้ ; เป็นตัวคั่น
+                        q4: getRadioValue('q4_confidence'),
+                        q5: getRadioValue('q5_duration')
+                    };
+
+                    // --- สร้าง URL สำหรับส่งต่อไปยังหน้าผลลัพธ์ ---
+                    // หมายเหตุ: คุณต้องอัปโหลดไฟล์ result.html ไปไว้ที่เดียวกับไฟล์นี้
+                    const params = new URLSearchParams(answers);
+                    const resultUrl = `result.html?${params.toString()}`;
+                    
+                    // ส่งต่อไปยังหน้า result.html
+                    window.location.href = resultUrl;
+                });
+            } else {
+                console.error("Error: The form element with ID 'hairQuizForm' was not found.");
+            }
+        });
+    </script>
+</body>
+</html>
+
