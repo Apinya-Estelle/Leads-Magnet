@@ -212,9 +212,11 @@
                     q5: getRadioValue('q5_duration')
                 };
                 const params = new URLSearchParams(answers);
+                // The key change is here: using a relative path.
                 window.location.href = `https://apinya-estelle.github.io/Result_Form/results_v2.html?${params.toString()}`;
             });
         });
     </script>
 </body>
 </html>
+
