@@ -51,15 +51,21 @@
                                 <span class="block mt-2 text-sm text-gray-700">ผมบางกลางศีรษะ</span>
                             </label>
                         </div>
-                        <!-- Image Option 4 -->
+                        <!-- ... (ตัวเลือกรูปภาพอื่นๆ ใช้รูปแบบเดียวกัน) ... -->
                         <div class="image-choice text-center">
+                            <input type="radio" id="q1_opt3" name="q1_condition" value="ผมร่วงเยอะผิดปกติ">
+                            <label for="q1_opt3" class="cursor-pointer">
+                                <img src="https://raw.githubusercontent.com/Apinya-Estelle/hair-quiz-images/main/%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B8%9C%E0%B8%A1%203.jpg" alt="ผมร่วงเยอะผิดปกติ" class="w-full h-auto object-cover">
+                                <span class="block mt-2 text-sm text-gray-700">ผมร่วงเยอะผิดปกติ</span>
+                            </label>
+                        </div>
+                         <div class="image-choice text-center">
                             <input type="radio" id="q1_opt4" name="q1_condition" value="ผมร่วงเป็นหย่อม">
                             <label for="q1_opt4" class="cursor-pointer">
                                 <img src="https://raw.githubusercontent.com/Apinya-Estelle/hair-quiz-images/main/%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B8%9C%E0%B8%A1%204.jpg" alt="ผมร่วงเป็นหย่อม" class="w-full h-auto object-cover">
                                 <span class="block mt-2 text-sm text-gray-700">ผมร่วงเป็นหย่อม</span>
                             </label>
                         </div>
-                        <!-- Image Option 5 -->
                         <div class="image-choice text-center">
                             <input type="radio" id="q1_opt5" name="q1_condition" value="ผมแห้งเสียขาดง่าย">
                             <label for="q1_opt5" class="cursor-pointer">
@@ -67,20 +73,11 @@
                                 <span class="block mt-2 text-sm text-gray-700">ผมแห้งเสียขาดง่าย</span>
                             </label>
                         </div>
-                         <!-- Image Option 6 -->
-                        <div class="image-choice text-center">
+                         <div class="image-choice text-center">
                             <input type="radio" id="q1_opt6" name="q1_condition" value="ผมบางลงโดยรวม">
                             <label for="q1_opt6" class="cursor-pointer">
                                 <img src="https://raw.githubusercontent.com/Apinya-Estelle/hair-quiz-images/main/%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B8%9C%E0%B8%A1%206.jpg" alt="ผมบางลงโดยรวม" class="w-full h-auto object-cover">
                                 <span class="block mt-2 text-sm text-gray-700">ผมบางลงโดยรวม</span>
-                            </label>
-                        </div>
-                        <!-- Image Option 3 -->
-                        <div class="image-choice text-center">
-                            <input type="radio" id="q1_opt3" name="q1_condition" value="ผมร่วงเยอะผิดปกติ">
-                            <label for="q1_opt3" class="cursor-pointer">
-                                <img src="https://raw.githubusercontent.com/Apinya-Estelle/hair-quiz-images/main/%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B8%9C%E0%B8%A1%203.jpg" alt="ผมร่วงเยอะผิดปกติ" class="w-full h-auto object-cover">
-                                <span class="block mt-2 text-sm text-gray-700">ผมร่วงเยอะผิดปกติ</span>
                             </label>
                         </div>
                     </div>
@@ -89,7 +86,6 @@
                 <!-- Question 2 -->
                 <div id="q2" class="question-card">
                     <label class="block text-lg font-semibold text-gray-700 mb-3">2. ในช่วง 1 ปีที่ผ่านมา คุณมีพฤติกรรมเหล่านี้บ่อยแค่ไหน?</label>
-                    <!-- [แก้ไข] เปลี่ยน space-y-1 เป็น space-y-2 -->
                     <div class="space-y-2">
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q2_actions" value="ทำสีผม" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>กัดสีผม / ทำสีผมเป็นประจำ</span></label>
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q2_actions" value="ดัด/ยืดผม" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ดัดผม / ยืดผม (มากกว่า 2 ครั้ง/ปี)</span></label>
@@ -97,37 +93,22 @@
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q2_actions" value="ไม่มี" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ไม่มีพฤติกรรมข้างต้น</span></label>
                     </div>
                 </div>
-                
-                <!-- Question 3 -->
-                <div id="q3" class="question-card">
-                    <label class="block text-lg font-semibold text-gray-700 mb-3">3. คุณดูแลปัญหาเส้นผมของคุณอย่างไรบ้าง? (เลือกได้หลายข้อ)</label>
-                     <!-- [แก้ไข] เปลี่ยน space-y-1 เป็น space-y-2 -->
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="แชมพูลดผมร่วง" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ใช้แชมพู/ครีมนวด สูตรลดผมร่วง</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ใช้เซรั่ม" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ใช้เซรั่ม / โทนิค บำรุงหนังศีรษะ</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ทานวิตามิน" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ทานวิตามิน / อาหารเสริม</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="พบแพทย์" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>พบแพทย์ผิวหนัง / คลินิกเส้นผม</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ไม่ได้ทำอะไร" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ยังไม่ได้เริ่มดูแลเป็นพิเศษ</span></label>
-                    </div>
-                </div>
 
                 <!-- Question 4 -->
-                <div id="q4" class="question-card">
-                    <label class="block text-lg font-semibold text-gray-700 mb-3">4. ไลฟ์สไตล์ของคุณในช่วง 3-6 เดือนที่ผ่านมาเป็นอย่างไร? (เลือกได้หลายข้อ)</label>
-                    <!-- [แก้ไข] เปลี่ยน space-y-1 เป็น space-y-2 -->
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="เครียดสูง" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>มีความเครียดสูง / วิตกกังวล</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="พักผ่อนน้อย" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>พักผ่อนน้อยกว่า 6 ชั่วโมงต่อวัน</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="ลดน้ำหนัก" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ลดน้ำหนักอย่างรวดเร็ว (มากกว่า 5 กก./เดือน)</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="เจ็บป่วย" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>เพิ่งหายจากการเจ็บป่วยรุนแรง / มีไข้สูง</span></label>
-                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="ปกติ" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ไลฟ์สไตล์ปกติ ไม่ได้มีอะไรเปลี่ยนแปลง</span></label>
+                 <div id="q4" class="question-card">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">3. ไลฟ์สไตล์ของคุณในช่วง 3-6 เดือนที่ผ่านมาเป็นอย่างไร? (เลือกได้หลายข้อ)</label>
+                     <div class="space-y-2">
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="เครียดสูง" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>มีความเครียดสูง / วิตกกังวล</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="พักผ่อนน้อย" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>พักผ่อนน้อยกว่า 6 ชั่วโมงต่อวัน</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="ลดน้ำหนัก" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ลดน้ำหนักอย่างรวดเร็ว (มากกว่า 5 กก./เดือน)</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="เจ็บป่วย" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>เพิ่งหายจากการเจ็บป่วยรุนแรง / มีไข้สูง</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q4_lifestyle" value="ปกติ" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ไลฟ์สไตล์ปกติ ไม่ได้มีอะไรเปลี่ยนแปลง</span></label>
                     </div>
                 </div>
 
                 <!-- Question 5 -->
                 <div id="q5" class="question-card">
-                    <label class="block text-lg font-semibold text-gray-700 mb-3">5. คนในครอบครัวสายตรง (พ่อ, แม่, พี่, น้อง) มีปัญหาผมบางจากพันธุกรรมหรือไม่?</label>
-                    <!-- [แก้ไข] เปลี่ยน space-y-1 เป็น space-y-2 -->
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">4. คนในครอบครัวสายตรง (พ่อ, แม่, พี่, น้อง) มีปัญหาผมบางจากพันธุกรรมหรือไม่?</label>
                     <div class="space-y-2">
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="radio" name="q5_genetics" value="มี" class="form-radio mr-3 h-5 w-5 text-indigo-600" required><span>มี</span></label>
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="radio" name="q5_genetics" value="ไม่มี" class="form-radio mr-3 h-5 w-5 text-indigo-600"><span>ไม่มี</span></label>
@@ -137,7 +118,7 @@
 
                 <!-- Question 6 -->
                 <div id="q6" class="question-card">
-                    <label class="block text-lg font-semibold text-gray-700 mb-3">6. นอกจากปัญหาผมร่วง คุณมีอาการอื่นๆ เหล่านี้ร่วมด้วยหรือไม่?</label>
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">5. ในช่วง 6 เดือนที่ผ่านมา นอกจากปัญหาผมร่วง คุณมีอาการอื่นๆ เหล่านี้ร่วมด้วยหรือไม่?</label>
                     <div class="space-y-2">
                         <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
                             <input type="checkbox" name="q6_symptoms" value="คัน/อักเสบ" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
@@ -155,6 +136,18 @@
                             <input type="checkbox" name="q6_symptoms" value="ไม่มี" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
                             <span>ไม่มีอาการเหล่านี้เลย</span>
                         </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 (Moved to the end) -->
+                <div id="q3" class="question-card">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">6. คุณดูแลปัญหาเส้นผมของคุณอย่างไรบ้าง? (เลือกได้หลายข้อ)</label>
+                    <div class="space-y-2">
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="แชมพูลดผมร่วง" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ใช้แชมพู/ครีมนวด สูตรลดผมร่วง</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ใช้เซรั่ม" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ใช้เซรั่ม / โทนิค บำรุงหนังศีรษะ</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ทานวิตามิน" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ทานวิตามิน / อาหารเสริม</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="พบแพทย์" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>พบแพทย์ผิวหนัง / คลินิกเส้นผม</span></label>
+                          <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors"><input type="checkbox" name="q3_solutions" value="ไม่ได้ทำอะไร" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600"><span>ยังไม่ได้เริ่มดูแลเป็นพิเศษ</span></label>
                     </div>
                 </div>
                 
@@ -210,16 +203,13 @@
             const currentCard = questions[index];
             const radios = currentCard.querySelectorAll('input[type="radio"][required]');
             if (radios.length > 0 && !currentCard.querySelector('input[type="radio"]:checked')) {
-                // For simplicity, we remove alert() as it can be obtrusive.
-                // In a real app, you'd show a gentle error message.
-                console.log('Please select an answer.');
-                return false;
+                 alert('กรุณาเลือกคำตอบ');
+                 return false;
             }
             const checkboxes = currentCard.querySelectorAll('input[type="checkbox"]');
             if (checkboxes.length > 0 && !currentCard.querySelector('input[type="checkbox"]:checked')) {
-                 // For simplicity, we remove alert() as it can be obtrusive.
-                 console.log('Please select at least one answer.');
-                return false;
+                 alert('กรุณาเลือกอย่างน้อย 1 คำตอบ');
+                 return false;
             }
             return true;
         }
@@ -228,7 +218,7 @@
              if (validateQuestion(currentQuestion) && currentQuestion < questions.length - 1) {
                  currentQuestion++;
                  showQuestion(currentQuestion);
-             }
+            }
         });
 
         prevBtn.addEventListener('click', () => {
@@ -242,16 +232,16 @@
             e.preventDefault();
             if (!validateQuestion(currentQuestion)) return;
             
+            // **จุดที่ 2 ที่แก้ไข: สลับลำดับการส่งข้อมูล**
             const params = new URLSearchParams({
                 q1: getSelectedValues('q1_condition'),
                 q2: getSelectedValues('q2_actions'),
-                q3: getSelectedValues('q3_solutions'),
                 q4: getSelectedValues('q4_lifestyle'),
                 q5: getSelectedValues('q5_genetics'),
-                q6: getSelectedValues('q6_symptoms')
+                q6: getSelectedValues('q6_symptoms'),
+                q3: getSelectedValues('q3_solutions') // ย้าย q3 มาไว้สุดท้าย
             });
             
-            // Redirect to a results page (replace with your actual page)
             window.location.href = `landing_page.html?${params.toString()}`;
         });
 
@@ -259,5 +249,3 @@
     </script>
 </body>
 </html>
-
-
