@@ -228,19 +228,67 @@
             }
         });
 
+        // --- โค้ดใหม่ที่ต้องเพิ่มเข้าไปแทนที่ ---
         document.getElementById('hairQuizForm').addEventListener('submit', function(e) {
             e.preventDefault();
             if (!validateQuestion(currentQuestion)) return;
+        
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzMcRESdWecIscn6r6Wx3kNGAB8trG9MZLbMP2IOVkkR9tPzfeP9ZjXt-zKFilXaHBe/exec';
+            const form = document.getElementById('hairQuizForm');
             
-            // **จุดที่ 2 ที่แก้ไข: สลับลำดับการส่งข้อมูล**
-            const params = new URLSearchParams({
-                q1: getSelectedValues('q1_condition'),
-                q2: getSelectedValues('q2_actions'),
-                q4: getSelectedValues('q4_lifestyle'),
-                q5: getSelectedValues('q5_genetics'),
-                q6: getSelectedValues('q6_symptoms'),
-                q3: getSelectedValues('q3_solutions') // ย้าย q3 มาไว้สุดท้าย
+            // สร้างข้อมูลที่จะส่งและที่จะใช้ redirect แยกกัน
+            const formDataForSheet = new FormData();
+            const paramsForRedirect = new URLSearchParams();
+            
+            // --- จัดการข้อมูลสำหรับส่ง ---
+
+            // จัดการ Radio buttons (q1, q5)
+            const radioNames = ['q1_condition', 'q5_genetics'];
+            radioNames.forEach(name => {
+               const checkedRadio = form.querySelector(`input[name="${name}"]:checked`);
+               const value = checkedRadio ? checkedRadio.value : '';
+               const key = name.split('_')[0]; // q1, q5
+               formDataForSheet.append(key, value);
+               paramsForRedirect.append(key, value);
             });
+
+            // จัดการ Checkbox (q2, q3, q4, q6)
+            // *** แก้ไขลำดับของ key ให้ตรงกับ Google Sheet ***
+            const checkboxNames = ['q2_actions', 'q4_lifestyle', 'q6_symptoms', 'q3_solutions'];
+            checkboxNames.forEach(name => {
+                const values = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+                const key = name.split('_')[0]; // q2, q4, q6, q3
+
+                if (values.length > 0) {
+                    formDataForSheet.append(key, values.join(', ')); // ใช้ ", " สำหรับ Sheet เพื่อให้อ่านง่าย
+                    paramsForRedirect.append(key, values.join(','));   // ใช้ "," สำหรับ URL
+                } else {
+                    formDataForSheet.append(key, '');
+                    paramsForRedirect.append(key, '');
+                }
+            });
+        
+            // เปลี่ยนปุ่มเป็นสถานะกำลังโหลด
+            const submitButton = document.getElementById('submitBtn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'กำลังส่งข้อมูล...';
+        
+            // ส่งข้อมูลไปยัง Google Apps Script
+            fetch(scriptURL, { method: 'POST', body: formDataForSheet})
+                .then(response => response.json()) // แปลง response เป็น JSON
+                .then(data => {
+                    console.log('Success!', data);
+                    // เมื่อส่งข้อมูลสำเร็จ ให้ redirect ไปยังหน้าผลลัพธ์
+                    window.location.href = `landing_page.html?${paramsForRedirect.toString()}`;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // หากส่งไม่สำเร็จ ให้คืนค่าปุ่มและแจ้งผู้ใช้
+                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'ดูผลการประเมิน';
+                });
+        });
             
             window.location.href = `landing_page.html?${params.toString()}`;
         });
@@ -249,3 +297,4 @@
     </script>
 </body>
 </html>
+
