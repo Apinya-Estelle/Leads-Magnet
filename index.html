@@ -232,7 +232,7 @@
             e.preventDefault();
             if (!validateQuestion(currentQuestion)) return;
         
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzMcRESdWecIscn6r6Wx3kNGAB8trG9MZLbMP2IOVkkR9tPzfeP9ZjXt-zKFilXaHBe/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxL_rjjbL-Zn1j-iRb5QePCh1lWMeEOA_4j1AAhKbmHfxlqrqD5rVzApdTA0IBSGW92/exec';
             const form = document.getElementById('hairQuizForm');
             
             // สร้างข้อมูลที่จะส่งและที่จะใช้ redirect แยกกัน
@@ -252,7 +252,6 @@
             });
 
             // จัดการ Checkbox (q2, q3, q4, q6)
-            // *** ลำดับของ key ถูกต้องตาม Google Sheet ที่คาดหวัง ***
             const checkboxNames = ['q2_actions', 'q4_lifestyle', 'q6_symptoms', 'q3_solutions'];
             checkboxNames.forEach(name => {
                 const values = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
@@ -266,6 +265,55 @@
                     paramsForRedirect.append(key, '');
                 }
             });
+
+            // --- [ส่วนที่ต้องเพิ่ม] คำนวณผลลัพธ์เพื่อส่งไป Google Sheet ---
+            let finalResultType = '';
+            
+            // ดึงข้อมูลคำตอบจากฟอร์มเพื่อใช้ในการคำนวณ
+            const q6_answers = Array.from(form.querySelectorAll('input[name="q6_symptoms"]:checked')).map(cb => cb.value);
+            const q1_answer = form.querySelector('input[name="q1_condition"]:checked')?.value || '';
+            const q5_answer = form.querySelector('input[name="q5_genetics"]:checked')?.value || '';
+            const q4_answers = Array.from(form.querySelectorAll('input[name="q4_lifestyle"]:checked')).map(cb => cb.value);
+            const q2_answers = Array.from(form.querySelectorAll('input[name="q2_actions"]:checked')).map(cb => cb.value);
+            
+            // ตรรกะการตัดสินผลลัพธ์
+            const hasHealthSymptoms = q6_answers.some(symptom => 
+                symptom.includes('คัน/อักเสบ') || 
+                symptom.includes('อ่อนเพลีย/ปวดข้อ') || 
+                symptom.includes('น้ำหนักเปลี่ยนแปลง')
+            );
+            
+            if (hasHealthSymptoms) {
+                finalResultType = 'ปัญหาสุขภาพ';
+            } else {
+                let geneticScore = 0;
+                let behaviorScore = 0;
+            
+                // ให้คะแนนตามคำตอบ
+                if (q1_answer.includes('แนวไรผมด้านหน้าเถิก') || q1_answer.includes('ผมบางลงบริเวณกลางศีรษะ')) {
+                    geneticScore += 3;
+                } else if (q1_answer.includes('ผมแห้งเสียขาดง่าย') || q1_answer.includes('ผมร่วงเยอะผิดปกติ')) {
+                    behaviorScore += 3;
+                }
+            
+                if (q5_answer === 'มี') {
+                    geneticScore += 2;
+                }
+            
+                behaviorScore += q4_answers.filter(a => a && a !== 'ปกติ').length;
+                behaviorScore += q2_answers.filter(a => a && a !== 'ไม่มี').length;
+            
+                // เปรียบเทียบคะแนน
+                if (geneticScore > behaviorScore) {
+                    finalResultType = 'พันธุกรรม';
+                } else {
+                    finalResultType = 'พฤติกรรม';
+                }
+            }
+            
+            // เพิ่มผลลัพธ์ที่คำนวณได้ลงในข้อมูลที่จะส่งไป Google Sheet
+            formDataForSheet.append('Result', finalResultType);
+            // -----------------------------------------------------------------
         
             // เปลี่ยนปุ่มเป็นสถานะกำลังโหลด
             const submitButton = document.getElementById('submitBtn');
