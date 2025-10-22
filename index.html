@@ -127,6 +127,28 @@
                     </div>
                 </div>
 
+                <!-- Question 6 -->
+                <div id="q6" class="question-card">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">6. ในช่วง 6 เดือนที่ผ่านมา นอกจากปัญหาผมร่วง คุณมีอาการอื่นๆ เหล่านี้ร่วมด้วยหรือไม่?</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q6_symptoms" value="คัน/อักเสบ" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
+                            <span>อาการคัน, มีรังแคผิดปกติ, หรือผิวหนังบนศีรษะอักเสบแดง</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q6_symptoms" value="อ่อนเพลีย/ปวดข้อ" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
+                            <span>อาการอ่อนเพลียผิดปกติ, ปวดตามข้อ, หรือมีผื่นแดงบนใบหน้า/ร่างกาย</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q6_symptoms" value="น้ำหนักเปลี่ยนแปลง" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
+                            <span>น้ำหนักตัวเปลี่ยนแปลงรวดเร็วโดยไม่ทราบสาเหตุ, รู้สึกหนาว/ร้อนกว่าปกติ</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" name="q6_symptoms" value="ไม่มี" class="form-checkbox mr-3 h-5 w-5 rounded text-indigo-600">
+                            <span>ไม่มีอาการเหล่านี้เลย</span>
+                        </label>
+                    </div>
+                </div>
                 <!-- Navigation Buttons -->
                 <div class="mt-8 flex justify-center gap-4">
                     <button type="button" id="prevBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-8 rounded-full transition duration-300" style="display: none;">ย้อนกลับ</button>
@@ -209,15 +231,14 @@
             if (!validateQuestion(currentQuestion)) return;
             
             const params = new URLSearchParams({
-                q1_condition: getSelectedValues('q1_condition'),
-                q2_actions: getSelectedValues('q2_actions'),
-                q3_solutions: getSelectedValues('q3_solutions'),
-                q4_lifestyle: getSelectedValues('q4_lifestyle'),
-                q5_genetics: getSelectedValues('q5_genetics'),
+                q1: getSelectedValues('q1_condition'),
+                q2: getSelectedValues('q2_actions'),
+                q3: getSelectedValues('q3_solutions'),
+                q4: getSelectedValues('q4_lifestyle'),
+                q5: getSelectedValues('q5_genetics'),
+                q6: getSelectedValues('q6_symptoms')
             });
             
-            // [สำคัญ] จุดนี้คือที่บอกให้เบราว์เซอร์ไปที่หน้า landing_page.html
-            // ต้องแน่ใจว่าไฟล์ landing_page.html อยู่ในตำแหน่งเดียวกันกับไฟล์นี้
             window.location.href = `landing_page.html?${params.toString()}`;
         });
 
@@ -225,4 +246,5 @@
     </script>
 </body>
 </html>
+
 
